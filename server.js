@@ -12,10 +12,11 @@ const app = express();
 // Middleware
 app.use(cors({
   origin: true, 
-  methods: ["GET", "POST", "PUT", "DELETE"], 
-  allowedHeaders: ["Content-Type", "Authorization"], 
-  credentials: true 
+  methods: ["GET", "POST", "PUT", "DELETE"], // allowed HTTP methods
+  allowedHeaders: ["Content-Type", "Authorization"], // allowed headers
+  credentials: true // allow cookies/auth headers
 }));
+
 app.use(express.json({ limit: '10mb' }));
 
 // MongoDB Connection
@@ -37,4 +38,3 @@ app.use((req, res) => {
 
 // No app.listen() in Vercel — export instead
 module.exports = app;
-
