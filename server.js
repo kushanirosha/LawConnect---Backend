@@ -10,7 +10,12 @@ const bookingRoutes = require('./routes/bookingRoutes');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: true, 
+  methods: ["GET", "POST", "PUT", "DELETE"], 
+  allowedHeaders: ["Content-Type", "Authorization"], 
+  credentials: true 
+}));
 app.use(express.json({ limit: '10mb' }));
 
 // MongoDB Connection
@@ -32,3 +37,4 @@ app.use((req, res) => {
 
 // No app.listen() in Vercel — export instead
 module.exports = app;
+
